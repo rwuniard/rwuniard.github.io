@@ -1,5 +1,32 @@
+<!DOCTYPE html>
 <HTML>
+    <HEAD>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Audio Player Page</title>
+    </HEAD>
     <BODY>
         <H1>Hello World</H1>
+        
+        <!-- Audio element with autoplay -->
+        <audio id="myAudio" autoplay controls>
+            <source src="smooth_jazz_final.wav" type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+        
+        <!-- Fallback button for browsers that block autoplay -->
+        <script>
+            var audio = document.getElementById("myAudio");
+            
+            // Try to play the audio
+            var playPromise = audio.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.catch(function(error) {
+                    // Autoplay was prevented
+                    console.log("Autoplay prevented. User interaction required.");
+                });
+            }
+        </script>
     </BODY>
 </HTML>
